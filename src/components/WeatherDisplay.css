@@ -1,0 +1,128 @@
+.weather-display {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: white;
+}
+
+.weather-header {
+  text-align: left;
+}
+
+.city-name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.country-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.weather-time {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.weather-condition {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+.weather-main {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.temperature-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weather-icon {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}
+
+.temperature-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.temperature-value {
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #333;
+}
+
+.temperature-value::after {
+  content: "°";
+  font-size: 2.5rem;
+  position: relative;
+  top: -0.5em;
+  margin-left: 0.1em;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: right;
+  justify-self: end;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.detail-value {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/*Responsive Design - Mobile First*/
+@media (max-width: 576px) {
+  .weather-main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .weather-details {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    justify-self: start;
+  }
+
+  .temperature-value {
+    font-size: 3rem;
+  }
+
+  .city-name {
+    font-size: 1.5rem;
+  }
+
+  .country-name {
+    font-size: 1.2rem;
+  }
+}
