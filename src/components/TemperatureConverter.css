@@ -1,0 +1,36 @@
+.temperature-converter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.temperature-converter .unit {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.temperature-converter .unit.active {
+  color: #564d97;
+  font-weight: 600;
+  background-color: rgba(86, 77, 151, 0.1);
+}
+
+.temperature-converter .unit:not(.active):hover {
+  color: #564d97;
+  background-color: rgba(86, 77, 151, 0.05);
+}
+
+.temperature-converter .separator {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.temperature-converter .unit:focus {
+  outline: 2px solid #564d97;
+  outline-offset: 2px;
+}
