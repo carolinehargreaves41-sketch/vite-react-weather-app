@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Alert } from "react-bootstrap";
 import SearchBar from "./components/SearchBar";
 import WeatherDisplay from "./components/WeatherDisplay";
-import { getCurrentWeather } from "./services/Wgit add .eatherApi";
+import { getCurrentWeather } from "./services/WeatherApi";
 import "./App.css";
 
 function App() {
