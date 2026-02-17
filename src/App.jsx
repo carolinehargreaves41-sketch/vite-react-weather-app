@@ -88,20 +88,26 @@ function App() {
 
       <footer className="text-center mt-1 text-muted">
         <small>
-          This project was coded by
+          This project was coded by{" "}
           <a
             href="https://github.com/carolinehargreaves41-sketch"
             target="_blank"
           >
             Caroline Hargreaves
           </a>
-          , is
-          <a href="#" target="_blank">
+          , is{" "}
+          <a
+            href="https://github.com/carolinehargreaves41-sketch/vite-react-weather-app"
+            target="_blank"
+          >
             open-sourced on GitHub
           </a>
-          , and
-          <a href="#" target="_blank">
-            hosted on Netlify
+          , and{" "}
+          <a
+            href="https://stately-raindrop-ae08fb.netlify.app/"
+            target="_blank"
+          >
+            hosted on Netlify.
           </a>
         </small>{" "}
         <br />
