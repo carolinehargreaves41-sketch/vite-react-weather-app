@@ -1,0 +1,23 @@
+.forecast-list-section {
+  margin-top: 2rem;
+}
+
+.forecast-list-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.forecast-list-ul {
+  list-style: none;
+  margin: 0;
+}
+
+.forecast-list-item {
+  min-width: 120px;
+}
+
+@media (min-width: 768px) {
+  .forecast-list-item {
+    width: 150px;
+  }
+}
