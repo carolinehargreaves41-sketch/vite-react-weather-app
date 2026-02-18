@@ -30,3 +30,21 @@ export const formatDateTime = (timestamp) => {
 
   return date.toLocaleString("en-US", options).replace(",", "");
 };
+
+/*Formats a short day name from a Unix timestamp*/
+export const getShortDayName = (timestamp) => {
+  return new Date(timestamp * 1000).toLocaleDateString("en-GB", {
+    weekday: "short",
+  });
+};
+
+/*Formats a short date string from a Unix timestamp*/
+export const getShortDate = (timestamp) => {
+  return newDate(timestamp * 1000).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+  });
+};
+
+/*Rounds a float temperature to the nearest integer*/
+export const roundTemp = (temp) => Math.round(temp);
