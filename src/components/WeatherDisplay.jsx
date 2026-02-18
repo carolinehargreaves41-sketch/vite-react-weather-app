@@ -5,6 +5,7 @@ import {
   capitalizeWords,
   formatDateTime,
   celsiusToFahrenheit,
+  msToMph,
 } from "../utils/helpers";
 import "./WeatherDisplay.css";
 
@@ -13,12 +14,21 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
 
   const { city, condition, temperature, wind, time } = weatherData;
 
+  /* Returns the current temperature formatted for the selected unit */
   const getDisplayTemperature = () => {
     const celsiusTemp = temperature.current;
-
     return unit === "fahrenheit"
       ? celsiusToFahrenheit(celsiusTemp)
       : Math.round(celsiusTemp);
+  };
+
+  /* Returns wind speed and label formatted for the selected unit.
+     The API always returns m/s (metric), so need to convert to mph for imperial. */
+  const getDisplayWind = () => {
+    if (unit === "fahrenheit") {
+      return `${msToMph(wind.speed)} mph`;
+    }
+    return `${wind.speed.toFixed(1)} m/s`;
   };
 
   return (
@@ -64,7 +74,7 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
             </div>
             <div className="detail-item">
               <span className="detail-label">Wind:</span>
-              <span className="detail-value">{wind.speed.toFixed(1)} km/h</span>
+              <span className="detail-value">{getDisplayWind()}</span>
             </div>
           </div>
         </div>
