@@ -46,5 +46,6 @@
 
 .search-button:focus-visible {
   outline: 3px solid rgba(108, 99, 255, 0.5);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
