@@ -1,4 +1,3 @@
-// src/components/WeatherDisplay.jsx
 import React from "react";
 import TemperatureConverter from "./TemperatureConverter";
 import {
@@ -61,6 +60,13 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
                 currentUnit={unit}
                 onUnitChange={onUnitChange}
               />
+              <p className="feels-like">
+                Feels like{" "}
+                {unit === "fahrenheit"
+                  ? celsiusToFahrenheit(temperature.feels_like)
+                  : Math.round(temperature.feels_like)}
+                °
+              </p>
             </div>
           </div>
 
