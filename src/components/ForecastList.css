@@ -43,8 +43,8 @@
 /* ── Orphaned 5th card on mobile (2-column layout) ───────────────────────── */
 @media (max-width: 575px) {
   .forecast-list-ul li:last-child:nth-child(odd) {
-    grid-column: 1 / -1; /* span full width of the grid */
-    max-width: 50%; /* but only take up half the space */
+    grid-column: 1 / -1; 
+    max-width: 50%; 
     margin-left: auto;
     margin-right: auto;
     width: 100%;

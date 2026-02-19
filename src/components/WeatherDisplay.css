@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 0 auto;
   border-radius: 12px;
-  background: white;
+  background: #fff;
 }
 
 .weather-header {
@@ -29,7 +29,7 @@
 
 .weather-condition {
   font-size: 1.1rem;
-  color: #666;
+  color: #444;
   margin-bottom: 0;
 }
 
@@ -90,7 +90,7 @@
 
 .detail-label {
   font-size: 1.1rem;
-  color: #666;
+  color: #333;
 }
 
 .detail-value {

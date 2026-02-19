@@ -1,8 +1,4 @@
-/* ─────────────────────────────────────────────────────────────────────────
-   BOOTSTRAP REPLACEMENTS
-   These replicate the Bootstrap utilities actually used in this app.
-   Replacing full Bootstrap saves ~27 KiB CSS and ~34 KiB JS.
-   ───────────────────────────────────────────────────────────────────────── */
+/* BOOTSTRAP REPLACEMENTS */
 
 /* Container — centred content with max-width */
 .container {

@@ -39,19 +39,22 @@
 
 .forecast-temp-max {
   color: #e63946;
+  color: #c8303c;
+  font-weight: 600;
 }
 
 .forecast-temp-divider {
-  color: #aaa;
+  color: #7d7d7d;
 }
 
 .forecast-temp-min {
   color: #457b9d;
+  font-weight: 600;
 }
 
 .forecast-detail {
   font-size: 0.7rem;
-  color: #555;
+  color: #333;
 }
 
 .sr-only {

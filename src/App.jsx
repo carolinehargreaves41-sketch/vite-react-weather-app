@@ -62,45 +62,47 @@ function App() {
 
         <SearchBar onSearch={handleSearch} />
 
-        <div className="weather-card-container">
-          {error && (
-            <div className="alert alert-secondary" role="alert">
-              <span>{error}</span>
-              <button
-                className="alert-dismiss-btn"
-                onClick={() => setError(null)}
-                aria-label="Dismiss error"
-              >
-                ✕
-              </button>
-            </div>
-          )}
-
-          {loading && (
-            <div className="spinner-container">
-              <div className="spinner-grow" role="status">
-                <span className="visually-hidden">Loading...</span>
+        <main>
+          <div className="weather-card-container">
+            {error && (
+              <div className="alert alert-secondary" role="alert">
+                <span>{error}</span>
+                <button
+                  className="alert-dismiss-btn"
+                  onClick={() => setError(null)}
+                  aria-label="Dismiss error"
+                >
+                  ✕
+                </button>
               </div>
-            </div>
-          )}
+            )}
 
-          {!loading && weatherData && (
-            <WeatherDisplay
-              weatherData={weatherData}
+            {loading && (
+              <div className="spinner-container">
+                <div className="spinner-grow" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            )}
+
+            {!loading && weatherData && (
+              <WeatherDisplay
+                weatherData={weatherData}
+                unit={unit}
+                onUnitChange={handleUnitChange}
+              />
+            )}
+          </div>
+
+          <div className="forecast-card-container">
+            <ForecastList
+              forecastData={forecastData}
+              isLoading={forecastLoading}
+              error={forecastError}
               unit={unit}
-              onUnitChange={handleUnitChange}
             />
-          )}
-        </div>
-
-        <div className="forecast-card-container">
-          <ForecastList
-            forecastData={forecastData}
-            isLoading={forecastLoading}
-            error={forecastError}
-            unit={unit}
-          />
-        </div>
+          </div>
+        </main>
       </div>
 
       <footer className="text-center mt-1 text-muted">
