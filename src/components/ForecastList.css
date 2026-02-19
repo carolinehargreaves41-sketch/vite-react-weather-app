@@ -13,11 +13,6 @@
 }
 
 .forecast-list-item {
-  min-width: 120px;
-}
-
-@media (min-width: 768px) {
-  .forecast-list-item {
-    width: 150px;
-  }
+  display: flex;
+  flex-direction: column;
 }

@@ -50,9 +50,9 @@ const ForecastList = ({ forecastData, isLoading, error, unit }) => {
             <Col
               key={day.time}
               as="li"
-              xs={6}
-              sm={4}
-              md="auto"
+              xs={6} /* Mobile: 2 cards per row (6/12 columns each) */
+              sm={4} /* Small tablet: 3 cards per row (4/12 columns each) */
+              lg={true} /* Large screens: all 5 cards share the row equally */
               className="forecast-list-item"
             >
               <ForecastDay day={day} unit={unit} />
