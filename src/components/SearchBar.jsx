@@ -16,6 +16,7 @@ const SearchBar = ({ onSearch }) => {
     <Form onSubmit={handleSubmit} className="mb-4">
       <InputGroup>
         <Form.Control
+          id="city-search"
           type="text"
           placeholder="Enter a city name..."
           value={city}
