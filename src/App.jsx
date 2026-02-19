@@ -85,12 +85,19 @@ function App() {
               </div>
             )}
 
-            {!loading && weatherData && (
-              <WeatherDisplay
-                weatherData={weatherData}
-                unit={unit}
-                onUnitChange={handleUnitChange}
-              />
+            {weatherData && (
+              <div
+                style={{
+                  opacity: loading ? 0.5 : 1,
+                  transition: "opacity 0.3s",
+                }}
+              >
+                <WeatherDisplay
+                  weatherData={weatherData}
+                  unit={unit}
+                  onUnitChange={handleUnitChange}
+                />
+              </div>
             )}
           </div>
 
