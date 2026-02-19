@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 import {
   getShortDayName,
   getShortDate,
@@ -13,8 +12,6 @@ import "./ForecastDay.css";
 const ForecastDay = ({ day, unit }) => {
   const { time, condition, temperature, wind } = day;
 
-  /* Apply unit conversion to max/min temps.
-     The API always returns metric, so we convert client-side if needed. */
   const maxTemp =
     unit === "fahrenheit"
       ? celsiusToFahrenheit(temperature.maximum)
@@ -30,14 +27,12 @@ const ForecastDay = ({ day, unit }) => {
       className="forecast-day-card"
       aria-label={`Forecast for ${getShortDayName(time)} ${getShortDate(time)}`}
     >
-      <Card className="h-100 text-center forecast-card shadow-sm">
-        <Card.Body className="p-2">
+      <div className="card h-100 text-center forecast-card shadow-sm">
+        <div className="card-body p-2">
           <p className="forecast-day-name mb-0">{getShortDayName(time)}</p>
-
           <p className="forecast-day-date text-muted mb-1">
             {getShortDate(time)}
           </p>
-
           <img
             src={condition.icon_url.replace("http://", "https://")}
             alt={condition.description}
@@ -48,11 +43,9 @@ const ForecastDay = ({ day, unit }) => {
               e.target.style.display = "none";
             }}
           />
-
           <p className="forecast-condition mb-1">
             {capitalizeWords(condition.description)}
           </p>
-
           <div
             className="forecast-temps"
             aria-label={`High ${maxTemp}°, low ${minTemp}°`}
@@ -68,12 +61,10 @@ const ForecastDay = ({ day, unit }) => {
               {minTemp}°
             </span>
           </div>
-
           <p className="forecast-detail mb-0">
             <span className="sr-only">Humidity: </span>
             💧 {temperature.humidity}%
           </p>
-
           <p className="forecast-detail mb-0">
             <span className="sr-only">Wind: </span>
             💨{" "}
@@ -81,8 +72,8 @@ const ForecastDay = ({ day, unit }) => {
               ? `${msToMph(wind.speed)} mph`
               : `${wind.speed.toFixed(1)} m/s`}
           </p>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </article>
   );
 };

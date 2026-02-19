@@ -1,77 +1,76 @@
-import axios from "axios";
-
 const API_CONFIG = {
   baseURL: "https://api.shecodes.io/weather/v1",
   apiKey: import.meta.env.VITE_SHECODES_API_KEY,
 };
 
-/*Fetches current weather data for a specified city or throws error*/
+/* Internal helper — performs a GET request with query params */
+const apiGet = async (endpoint, params) => {
+  const url = new URL(`${API_CONFIG.baseURL}/${endpoint}`);
+
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, value);
+  });
+
+  let response;
+  try {
+    response = await fetch(url.toString());
+  } catch {
+    throw new Error("Network error — please check your internet connection.");
+  }
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Invalid API key. Please check your configuration.");
+    }
+    if (response.status === 404) {
+      throw new Error(
+        "City not found. Please check the spelling and try again.",
+      );
+    }
+    throw new Error("Unable to fetch weather data. Please try again later.");
+  }
+
+  return response.json();
+};
+
+/* Fetches current weather data for a specified city */
 export const getCurrentWeather = async (city, units = "metric") => {
   try {
-    const response = await axios.get(`${API_CONFIG.baseURL}/current`, {
-      params: {
-        query: city,
-        key: API_CONFIG.apiKey,
-        units: units,
-      },
+    const data = await apiGet("current", {
+      query: city,
+      key: API_CONFIG.apiKey,
+      units,
     });
 
-    if (!response.data || !response.data.city) {
+    if (!data.city) {
       throw new Error(
         "City not found. Please check the spelling and try again.",
       );
     }
 
-    return response.data;
+    return data;
   } catch (error) {
     console.error("Error fetching weather:", error);
-
-    if (error.response) {
-      if (error.response.status === 404) {
-        throw new Error(
-          "City not found. Please check the spelling and try again.",
-        );
-      }
-      throw new Error(`Unable to fetch weather data. Please try again later.`);
-    } else if (error.request) {
-      throw new Error("Network error - please check your internet connection.");
-    } else if (error.message.includes("City not found")) {
-      throw error;
-    } else {
-      throw new Error("Failed to fetch weather data. Please try again.");
-    }
+    throw error;
   }
 };
 
-/*Fetches forecast weather data for a specified city or throws error*/
+/* Fetches 5-7 day forecast data for a specified city */
 export const getForecast = async (city, units = "metric") => {
   try {
-    const response = await axios.get(`${API_CONFIG.baseURL}/forecast`, {
-      params: {
-        query: city,
-        key: API_CONFIG.apiKey,
-        units: units,
-      },
+    const data = await apiGet("forecast", {
+      query: city,
+      key: API_CONFIG.apiKey,
+      units,
     });
 
-    if (!response.data || !Array.isArray(response.data.daily)) {
+    if (!Array.isArray(data.daily)) {
       throw new Error("Forecast data unavailable for this city.");
     }
 
-    return response.data;
+    return data;
   } catch (error) {
-    if (!error.response && !error.request) throw error;
-
     console.error("Error fetching forecast:", error);
-
-    if (error.response?.status === 404) {
-      throw new Error(
-        "City not found. Please check the spelling and try again.",
-      );
-    } else if (error.request) {
-      throw new Error("Network error - please check your internet connection.");
-    } else {
-      throw new Error("Unable to fetch forecast data. Please try again later.");
-    }
+    throw error;
   }
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Container, Alert } from "react-bootstrap";
 import SearchBar from "./components/SearchBar";
 import WeatherDisplay from "./components/WeatherDisplay";
 import ForecastList from "./components/ForecastList";
@@ -11,7 +10,6 @@ function App() {
   const [unit, setUnit] = useState("celsius");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const [forecastData, setForecastData] = useState(null);
   const [forecastLoading, setForecastLoading] = useState(false);
   const [forecastError, setForecastError] = useState(null);
@@ -23,7 +21,6 @@ function App() {
   const handleSearch = async (city) => {
     setError(null);
     setForecastError(null);
-
     setLoading(true);
     setForecastLoading(true);
 
@@ -55,7 +52,7 @@ function App() {
 
   return (
     <div className="App">
-      <Container className="py-5">
+      <div className="container py-5">
         <header className="text-center mb-4">
           <h1 className="app-title">Weather App</h1>
           <p className="app-subtitle text-muted">
@@ -65,40 +62,46 @@ function App() {
 
         <SearchBar onSearch={handleSearch} />
 
-        {error && (
-          <Alert
-            variant="secondary"
-            className="alert-text"
-            dismissible
-            onClose={() => setError(null)}
-          >
-            {error}
-          </Alert>
-        )}
-
-        {loading && (
-          <div className="text-center my-4">
-            <div className="spinner-grow text-light" role="status">
-              <span className="visually-hidden">Loading...</span>
+        <div className="weather-card-container">
+          {error && (
+            <div className="alert alert-secondary" role="alert">
+              <span>{error}</span>
+              <button
+                className="alert-dismiss-btn"
+                onClick={() => setError(null)}
+                aria-label="Dismiss error"
+              >
+                ✕
+              </button>
             </div>
-          </div>
-        )}
+          )}
 
-        {!loading && weatherData && (
-          <WeatherDisplay
-            weatherData={weatherData}
+          {loading && (
+            <div className="spinner-container">
+              <div className="spinner-grow" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+
+          {!loading && weatherData && (
+            <WeatherDisplay
+              weatherData={weatherData}
+              unit={unit}
+              onUnitChange={handleUnitChange}
+            />
+          )}
+        </div>
+
+        <div className="forecast-card-container">
+          <ForecastList
+            forecastData={forecastData}
+            isLoading={forecastLoading}
+            error={forecastError}
             unit={unit}
-            onUnitChange={handleUnitChange}
           />
-        )}
-
-        <ForecastList
-          forecastData={forecastData}
-          isLoading={forecastLoading}
-          error={forecastError}
-          unit={unit}
-        />
-      </Container>
+        </div>
+      </div>
 
       <footer className="text-center mt-1 text-muted">
         <small>
@@ -106,6 +109,7 @@ function App() {
           <a
             href="https://github.com/carolinehargreaves41-sketch"
             target="_blank"
+            rel="noreferrer"
           >
             Caroline Hargreaves
           </a>
@@ -113,6 +117,7 @@ function App() {
           <a
             href="https://github.com/carolinehargreaves41-sketch/vite-react-weather-app"
             target="_blank"
+            rel="noreferrer"
           >
             open-sourced on GitHub
           </a>
@@ -120,10 +125,11 @@ function App() {
           <a
             href="https://stately-raindrop-ae08fb.netlify.app/"
             target="_blank"
+            rel="noreferrer"
           >
             hosted on Netlify.
           </a>
-        </small>{" "}
+        </small>
         <br />
         <small>Weather data provided by SheCodes Weather API</small>
       </footer>

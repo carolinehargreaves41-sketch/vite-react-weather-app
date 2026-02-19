@@ -10,6 +10,45 @@
 .forecast-list-ul {
   list-style: none;
   margin: 0;
+  padding: 0;
+
+  /* Mobile: 2 equal columns */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Small tablet (576px+): 3 columns with centred incomplete last row */
+@media (min-width: 576px) and (max-width: 991px) {
+  .forecast-list-ul {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .forecast-list-item {
+    grid-column: span 2;
+  }
+
+  .forecast-list-item:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+}
+
+/* Desktop (992px+): all 5 cards in one row */
+@media (min-width: 992px) {
+  .forecast-list-ul {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ── Orphaned 5th card on mobile (2-column layout) ───────────────────────── */
+@media (max-width: 575px) {
+  .forecast-list-ul li:last-child:nth-child(odd) {
+    grid-column: 1 / -1; /* span full width of the grid */
+    max-width: 50%; /* but only take up half the space */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }
 
 .forecast-list-item {

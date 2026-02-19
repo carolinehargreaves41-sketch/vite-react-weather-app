@@ -1,5 +1,5 @@
+// src/components/WeatherDisplay.jsx
 import React from "react";
-import { Card } from "react-bootstrap";
 import TemperatureConverter from "./TemperatureConverter";
 import {
   capitalizeWords,
@@ -14,7 +14,6 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
 
   const { city, condition, temperature, wind, time } = weatherData;
 
-  /* Returns the current temperature formatted for the selected unit */
   const getDisplayTemperature = () => {
     const celsiusTemp = temperature.current;
     return unit === "fahrenheit"
@@ -22,8 +21,6 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
       : Math.round(celsiusTemp);
   };
 
-  /* Returns wind speed and label formatted for the selected unit.
-     The API always returns m/s (metric), so need to convert to mph for imperial. */
   const getDisplayWind = () => {
     if (unit === "fahrenheit") {
       return `${msToMph(wind.speed)} mph`;
@@ -32,8 +29,8 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
   };
 
   return (
-    <Card className="weather-display shadow-sm">
-      <Card.Body>
+    <div className="weather-display card shadow-sm">
+      <div className="card-body">
         <div className="weather-header mb-3">
           <h2 className="city-name">
             {capitalizeWords(city)}
@@ -53,12 +50,13 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
               src={condition.icon_url.replace("http://", "https://")}
               alt={condition.description}
               className="weather-icon"
+              width={100}
+              height={100}
             />
             <div className="temperature-display">
               <span className="temperature-value">
                 {getDisplayTemperature()}
               </span>
-
               <TemperatureConverter
                 currentUnit={unit}
                 onUnitChange={onUnitChange}
@@ -77,8 +75,8 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
             </div>
           </div>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 

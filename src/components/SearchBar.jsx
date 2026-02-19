@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, InputGroup } from "react-bootstrap";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   const [city, setCity] = useState("");
@@ -13,28 +13,33 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="mb-4">
-      <InputGroup>
-        <Form.Control
+    <form onSubmit={handleSubmit} className="search-form mb-4">
+      {/* Label is visually hidden but present for screen readers */}
+      <label htmlFor="city-search" className="visually-hidden">
+        Search for a city
+      </label>
+
+      <div className="search-input-group">
+        <input
           id="city-search"
           type="text"
           placeholder="Enter a city name..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
           aria-label="City search input"
+          className="search-input"
           required
         />
 
-        <Button
-          variant="primary"
-          className="custom-search-button"
+        <button
           type="submit"
+          className="search-button"
           aria-label="Search for weather"
         >
           Search
-        </Button>
-      </InputGroup>
-    </Form>
+        </button>
+      </div>
+    </form>
   );
 };
 

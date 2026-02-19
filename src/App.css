@@ -1,3 +1,153 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   BOOTSTRAP REPLACEMENTS
+   These replicate the Bootstrap utilities actually used in this app.
+   Replacing full Bootstrap saves ~27 KiB CSS and ~34 KiB JS.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Container — centred content with max-width */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* Shadow */
+.shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Alert */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.alert-secondary {
+  background-color: #f8f0f0;
+  border-color: #e0c8c8;
+  color: #5a3a3a;
+}
+
+.alert-dismiss-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+@keyframes spinner-grow {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.spinner-grow {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  animation: spinner-grow 0.75s linear infinite;
+  display: inline-block;
+}
+
+/* Bootstrap spacing utilities used in components */
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+.mt-1 {
+  margin-top: 0.25rem !important;
+}
+.my-4 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+.py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+.p-2 {
+  padding: 0.5rem !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.align-items-center {
+  align-items: center !important;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-muted {
+  color: #2b2f32 !important;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* CSS before Uninstalling Bootstrap */
+
 .App {
   min-height: 100vh;
   background: linear-gradient(to top, #f77062 0%, #fe5196 100%);
@@ -51,6 +201,14 @@
 .custom-search-button:hover {
   background-color: #564d97;
   border-color: #564d97;
+}
+
+.weather-card-container {
+  min-height: 220px;
+}
+
+.forecast-card-container {
+  min-height: 200px;
 }
 
 a {
