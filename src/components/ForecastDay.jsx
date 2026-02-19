@@ -39,7 +39,7 @@ const ForecastDay = ({ day, unit }) => {
           </p>
 
           <img
-            src={condition.icon_url}
+            src={condition.icon_url.replace("http://", "https://")}
             alt={condition.description}
             className="forecast-icon"
             width={40}

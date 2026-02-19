@@ -50,11 +50,10 @@ const WeatherDisplay = ({ weatherData, unit, onUnitChange }) => {
         <div className="weather-main d-flex align-items-center justify-content-between">
           <div className="temperature-section d-flex align-items-center">
             <img
-              src={condition.icon_url}
+              src={condition.icon_url.replace("http://", "https://")}
               alt={condition.description}
               className="weather-icon"
             />
-
             <div className="temperature-display">
               <span className="temperature-value">
                 {getDisplayTemperature()}
