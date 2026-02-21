@@ -17,7 +17,7 @@
 }
 
 .country-name {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: #555;
 }
@@ -51,6 +51,7 @@
   width: 160px;
   height: 160px;
   object-fit: contain;
+  filter: drop-shadow(1px 2px 6px rgba(0, 0, 0, 0.45));
 }
 
 .temperature-display {
@@ -118,7 +119,6 @@
     flex-direction: row;
     flex-direction: column;
     justify-content: space-between;
-
     text-align: right;
     justify-self: start;
   }

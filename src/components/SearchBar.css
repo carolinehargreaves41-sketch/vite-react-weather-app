@@ -23,7 +23,7 @@
 }
 
 .search-input:focus {
-  border-color: #564d97;
+  border: 3px solid #564d97;
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
 }
 
@@ -41,7 +41,8 @@
 }
 
 .search-button:hover {
-  background-color: #5a52d5;
+  background-color: #efa518;
+  border: 2px solid #564d97;
 }
 
 .search-button:focus-visible {
